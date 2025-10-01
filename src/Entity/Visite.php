@@ -15,13 +15,13 @@ class Visite
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $Ville = null;
+    private ?string $ville = null;
 
     #[ORM\Column(length: 50)]
     private ?string $pays = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable : true)]
-    private ?\DateTime $datecreation = null;
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $datecreation = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $note = null;
@@ -42,12 +42,12 @@ class Visite
 
     public function getVille(): ?string
     {
-        return $this->Ville;
+        return $this->ville;
     }
 
-    public function setVille(string $Ville): static
+    public function setVille(string $ville): static
     {
-        $this->Ville = $Ville;
+        $this->ville = $ville;
 
         return $this;
     }
@@ -64,16 +64,25 @@ class Visite
         return $this;
     }
 
-    public function getDatecreation(): ?\DateTime
+    public function getDatecreation(): ?\DateTimeInterface
     {
         return $this->datecreation;
     }
 
-    public function setDatecreation(\DateTime $datecreation): static
+    public function setDatecreation(?\DateTimeInterface $datecreation): static
     {
         $this->datecreation = $datecreation;
 
         return $this;
+    }
+    
+    public function getDatecreationString(): string
+    {
+        if($this->datecreation == null){
+            return "";
+        }else{
+            return $this->datecreation->format('d/m/Y');
+        }
     }
 
     public function getNote(): ?int
