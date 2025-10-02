@@ -22,6 +22,17 @@ class VisiteRepository extends ServiceEntityRepository
     }
 
     /**
+     * Supprime une visite
+     * @param Visite $visite
+     * @return void
+     */
+    public function remove(Visite $visite): void
+        {
+            $this->getEntityManager()->remove($visite);
+            $this->getEntityManager()->flush();
+        }
+    
+    /**
      * Retourne toutes les visites triées sur un champ
      * @param type $champ
      * @param type $ordre
@@ -54,6 +65,5 @@ class VisiteRepository extends ServiceEntityRepository
                     ->getQuery()
                     ->getResult();                   
         }
-    }
-    
+    } 
 }
