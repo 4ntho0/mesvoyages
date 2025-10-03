@@ -8,6 +8,11 @@ use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<Environnement>
+ *
+ * @method Environnement|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Environnement|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Environnement[]    findAll()
+ * @method Environnement[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class EnvironnementRepository extends ServiceEntityRepository
 {
@@ -16,26 +21,26 @@ class EnvironnementRepository extends ServiceEntityRepository
         parent::__construct($registry, Environnement::class);
     }
     
-     /**
-     * Ajoute ou Modifie un environnement
-     * @param Visite $environnement
-     * @return void
-     */
-     public function add(Environnement $environnement): void
-        {
-            $this->getEntityManager()->persist($environnement);
-            $this->getEntityManager()->flush();
-        }
-        
     /**
      * Supprime un environnement
-     * @param Visite $environnement
+     * @param Environnement $environnement
      * @return void
      */
     public function remove(Environnement $environnement): void
-        {
-            $this->getEntityManager()->remove($environnement);
-            $this->getEntityManager()->flush();
-        }
-    
+    {
+        $this->getEntityManager()->remove($environnement);
+        $this->getEntityManager()->flush();
+    }    
+
+    /**
+     * Ajoute un environnement
+     * @param Environnement $environnement
+     * @return void
+     */
+    public function add(Environnement $environnement): void
+    {
+        $this->getEntityManager()->persist($environnement);
+        $this->getEntityManager()->flush();
+    }    
+
 }

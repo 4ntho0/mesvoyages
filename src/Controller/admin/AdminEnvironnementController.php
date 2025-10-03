@@ -1,15 +1,8 @@
 <?php
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/PHPClass.php to edit this template
- */
-
 namespace App\Controller\admin;
 
 use App\Entity\Environnement;
 use App\Repository\EnvironnementRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,12 +11,13 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Description of AdminEnvironnementController
  *
- * @author Antho
+ * @author emds
  */
 class AdminEnvironnementController extends AbstractController{
+
     /**
      * 
-     * @var VisiteRepository
+     * @var EnvironnementRepository
      */
     private $repository;
     
@@ -35,7 +29,7 @@ class AdminEnvironnementController extends AbstractController{
         $this->repository = $repository;
     }
     
-     #[Route('/admin/environnements', name: 'admin.environnements')]
+    #[Route('/admin/environnements', name: 'admin.environnements')]
     public function index(): Response {
         $environnements = $this->repository->findAll();
         return $this->render("admin/admin.environnements.html.twig", [
@@ -58,4 +52,5 @@ class AdminEnvironnementController extends AbstractController{
         $this->repository->add($environnment);
         return $this->redirectToRoute('admin.environnements');
     }
+    
 }
