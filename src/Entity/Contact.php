@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Description of Contact
  *
- * @author antho
+ * @author emds
  */
 class Contact {
 

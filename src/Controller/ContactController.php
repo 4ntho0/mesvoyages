@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Description of ContactController
  *
- * @author antho
+ * @author emds
  */
 class ContactController extends AbstractController {
 
@@ -53,5 +53,3 @@ class ContactController extends AbstractController {
     }
     
 }
-
-

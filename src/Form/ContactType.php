@@ -12,7 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * Description of ContactType
  *
- * @author antho
+ * @author emds
  */
 class ContactType extends AbstractType {
 
