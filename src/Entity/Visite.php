@@ -28,10 +28,11 @@ class Visite
     private ?string $pays = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[Assert\LessThanOrEqual("now")]
     private ?\DateTimeInterface $datecreation = null;
 
     #[ORM\Column(nullable: true)]
-    #[Assert\Range(min: 0, max:20)]
+    #[Assert\Range(min: 0, max: 20)]
     private ?int $note = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
